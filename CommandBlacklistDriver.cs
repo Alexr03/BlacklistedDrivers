@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LYHMEManager
+namespace BlackListedDrivers
 {
     class CommandAddDriver : IRocketCommand
     {
@@ -48,14 +48,14 @@ namespace LYHMEManager
         public void Execute(IRocketPlayer caller, string[] command)
         {
             UnturnedPlayer user = (UnturnedPlayer)caller;
-            UnturnedPlayer driver = UnturnedPlayer.FromName(command[1]);
+            UnturnedPlayer driver = UnturnedPlayer.FromName(command[0]);
 
-            BlackListedDrivers.Main.Blacklisted.Add(driver.CSteamID);
-            if (BlackListedDrivers.Main.Blacklisted.Contains(driver.CSteamID))
+            Main.Blacklisted.Add(driver.CSteamID);
+            if (Main.Blacklisted.Contains(driver.CSteamID))
             {
                 UnturnedChat.Say(user.CSteamID, "Sucessfully blacklisted: " + driver.CharacterName + " From driving");
             }
-            else { }
+            else { UnturnedChat.Say(user.CSteamID, "An error occured trying to blacklist: " + driver.CharacterName + " From driving"); }
 
         }
     }

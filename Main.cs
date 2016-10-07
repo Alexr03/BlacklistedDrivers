@@ -12,10 +12,12 @@ namespace BlackListedDrivers
 {
     public class Main : RocketPlugin
     {
+        public static Main Instance;
         public static List<CSteamID> Blacklisted = new List<CSteamID>();
 
         protected override void Load()
         {
+            Instance = this;
             Rocket.Core.Logging.Logger.Log("Blacklisted Drivers loaded! ~~ Alexr03!");
 
             Rocket.Unturned.Events.UnturnedPlayerEvents.OnPlayerUpdateStance += UpdatedStance;

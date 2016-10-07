@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LYHMEManager
+namespace BlackListedDrivers
 {
     class CommandCheckDriver : IRocketCommand
     {
@@ -48,7 +48,7 @@ namespace LYHMEManager
         public void Execute(IRocketPlayer caller, string[] command)
         {
             UnturnedPlayer user = (UnturnedPlayer)caller;
-            UnturnedPlayer driver = UnturnedPlayer.FromName(command[1]);
+            UnturnedPlayer driver = UnturnedPlayer.FromName(command[0]);
 
             if (BlackListedDrivers.Main.Blacklisted.Contains(driver.CSteamID)) { UnturnedChat.Say(user.CSteamID + "User: " + driver.CharacterName + " Is already blacklisted!"); }
             else { UnturnedChat.Say(user.CSteamID + "User: " + driver.CharacterName + " Is not blacklisted!"); }
