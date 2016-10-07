@@ -41,7 +41,7 @@ namespace BlackListedDrivers
         {
             get
             {
-                return new List<string>() { "driver.remove" };
+                return new List<string>() { "driver.check" };
             }
         }
 
