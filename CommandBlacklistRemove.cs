@@ -1,0 +1,57 @@
+﻿using Rocket.API;
+using Rocket.Unturned.Chat;
+using Rocket.Unturned.Player;
+using Steamworks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace LYHMEManager
+{
+    class CommandRemoveDriver : IRocketCommand
+    {
+
+        public string Help
+        {
+            get { return "Removes a user from the blacklist"; }
+        }
+
+        public string Name
+        {
+            get { return "removedriver"; }
+        }
+
+        public string Syntax
+        {
+            get { return "/removedriver <player>"; }
+        }
+
+        public List<string> Aliases
+        {
+            get { return new List<string>(); }
+        }
+
+        public AllowedCaller AllowedCaller
+        {
+            get { return AllowedCaller.Both; }
+        }
+
+        public List<string> Permissions
+        {
+            get
+            {
+                return new List<string>() { "driver.check" };
+            }
+        }
+
+        public void Execute(IRocketPlayer caller, string[] command)
+        {
+            UnturnedPlayer user = (UnturnedPlayer)caller;
+            UnturnedPlayer driver = UnturnedPlayer.FromName(command[1]);
+
+            if(BlackListedDrivers.Main.Blacklisted.Contains(driver.CSteamID)) { BlackListedDrivers.Main.Blacklisted.Remove(driver.CSteamID); UnturnedChat.Say(user.CSteamID, "User: " + driver.CharacterName + " Was removed from the blacklist"); }
+            else { UnturnedChat.Say(user.CSteamID, "User either does not exist in the blacklist or an error occured."); }
+        }
+    }
+}
