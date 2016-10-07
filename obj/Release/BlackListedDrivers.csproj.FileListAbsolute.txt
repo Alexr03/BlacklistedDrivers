@@ -8,3 +8,4 @@ c:\users\alex\documents\visual studio 2015\Projects\BlackListedDrivers\BlackList
 c:\users\alex\documents\visual studio 2015\Projects\BlackListedDrivers\BlackListedDrivers\bin\Release\UnityEngine.dll
 c:\users\alex\documents\visual studio 2015\Projects\BlackListedDrivers\BlackListedDrivers\obj\Release\BlackListedDrivers.dll
 c:\users\alex\documents\visual studio 2015\Projects\BlackListedDrivers\BlackListedDrivers\obj\Release\BlackListedDrivers.pdb
+c:\users\alex\documents\visual studio 2015\Projects\BlackListedDrivers\BlackListedDrivers\obj\Release\BlackListedDrivers.csprojResolveAssemblyReference.cache
