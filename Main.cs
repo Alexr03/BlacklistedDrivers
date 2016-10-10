@@ -7,6 +7,7 @@ using System.Text;
 using Rocket.Unturned.Player;
 using SDG.Unturned;
 using Rocket.Unturned.Chat;
+using Rocket.API;
 
 namespace BlackListedDrivers
 {
@@ -33,13 +34,13 @@ namespace BlackListedDrivers
                     UnturnedChat.Say(player.CSteamID, "You have been blacklisted from driving.");
                 }
 
-                //foreach(CSteamID g in Configuration.Instance.BlacklistedGroup)
-                //{
-                //    if(player.SteamGroupID == g)
-                //    {
+                IRocketPlayer player2 = (IRocketPlayer)player;
 
-                //    }
-                //}
+                if (player2.HasPermission("driver.group"))
+                {
+                    player.CurrentVehicle.kickPlayer(0);
+                    UnturnedChat.Say(player.CSteamID, "You have been blacklisted from driving.");
+                }
             }
         }
 
