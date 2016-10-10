@@ -12,10 +12,12 @@ namespace BlackListedDrivers
     public class BlackListedDriversConfiguration : IRocketPluginConfiguration
     {
         public bool Save_Local;
+        public bool GroupBlacklisting;
 
         public void LoadDefaults()
         {
             Save_Local = true;
+            GroupBlacklisting = false;
         }
     }
 }

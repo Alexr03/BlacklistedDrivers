@@ -34,12 +34,15 @@ namespace BlackListedDrivers
                     UnturnedChat.Say(player.CSteamID, "You have been blacklisted from driving.");
                 }
 
-                IRocketPlayer player2 = (IRocketPlayer)player;
-
-                if (player2.HasPermission("driver.group"))
+                if (Configuration.Instance.GroupBlacklisting)
                 {
-                    player.CurrentVehicle.kickPlayer(0);
-                    UnturnedChat.Say(player.CSteamID, "You have been blacklisted from driving.");
+                    IRocketPlayer player2 = (IRocketPlayer)player;
+
+                    if (player2.HasPermission("driver.group"))
+                    {
+                        player.CurrentVehicle.kickPlayer(0);
+                        UnturnedChat.Say(player.CSteamID, "You have been blacklisted from driving.");
+                    }
                 }
             }
         }
