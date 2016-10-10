@@ -24,7 +24,7 @@ namespace BlackListedDrivers
 
         public string Syntax
         {
-            get { return "/removedriver <player>"; }
+            get { return "<Player>"; }
         }
 
         public List<string> Aliases
