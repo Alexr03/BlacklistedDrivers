@@ -8,6 +8,7 @@ using Rocket.Unturned.Player;
 using SDG.Unturned;
 using Rocket.Unturned.Chat;
 using Rocket.API;
+using Rocket.Unturned;
 
 namespace BlackListedDrivers
 {
@@ -22,6 +23,13 @@ namespace BlackListedDrivers
             Rocket.Core.Logging.Logger.Log("Blacklisted Drivers loaded! ~~ Alexr03!");
 
             Rocket.Unturned.Events.UnturnedPlayerEvents.OnPlayerUpdateStance += UpdatedStance;
+
+            U.Events.OnShutdown += OnShutdown;
+        }
+
+        private void OnShutdown()
+        {
+            throw new NotImplementedException();
         }
 
         private void UpdatedStance(UnturnedPlayer player, byte stance)
@@ -42,6 +50,8 @@ namespace BlackListedDrivers
                     {
                         player.CurrentVehicle.kickPlayer(0);
                         UnturnedChat.Say(player.CSteamID, "You have been blacklisted from driving.");
+
+                        Provider.map = "Washington";
                     }
                 }
             }
